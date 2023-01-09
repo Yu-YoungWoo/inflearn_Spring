@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- div 같이 블록 태그를 2개 이상 반복문으로 돌리고 싶을 때 th:block -->
+<!-- th:each만 사용하여 해결하기 힘들 때 사용함 -->
+<th:block th:each="user : ${users}">
+    <div>
+        사용자 이름1 <span th:text="${user.username}"></span>
+        사용자 나이1 <span th:text="${user.age}"></span>
+    </div>
+    <div>
+        요약 <span th:text="${user.username} + '/' + ${user.age}"></span>
+    </div>
+</th:block>
+
+</body>
+</html>
