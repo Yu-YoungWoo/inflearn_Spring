@@ -26,21 +26,6 @@ public class ItemValidator implements Validator {
         // FieldError의 rejectedValue는 에러값을 저장한다.
         // errors_en.properties 같이 국제화 처리 가능
 
-        // 간단하게 사용할 수 있음 복잡한 조건은 해결이 어려우니 간단한 에러에서 사용하기 좋음
-        // ValidationUtils.rejectIfEmpty(bindingResult, "itemName", "required");
-
-
-        if(!StringUtils.hasText(item.getItemName())) {
-            errors.rejectValue("itemName", "required");
-        }
-
-        if(item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
-            errors.rejectValue("price", "range", new Object[]{1000, 1000000}, null);
-        }
-        if(item.getQuantity() == null || item.getQuantity() >= 9999) {
-
-            errors.rejectValue("quantity", "max", new Object[]{9999}, null);
-        }
 
         // 특정 필드가 아닌 복합 룰 검증
         if(item.getPrice() != null && item.getQuantity() != null) {
