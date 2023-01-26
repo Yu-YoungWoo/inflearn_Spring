@@ -1,16 +1,19 @@
 package ex1hellojpa.jpabasic;
 
 
+import ex1hellojpa.embedded.Address;
+import ex1hellojpa.embedded.Period;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member extends BaseEntity{
+public class Member{
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
@@ -34,9 +37,17 @@ public class Member extends BaseEntity{
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
+    @Embedded
+    private Period period;
 
-    @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProducts = new ArrayList<>();
+    @Embedded
+    private Address homeAddress;
+
+
+
+
+//    @OneToMany(mappedBy = "member")
+//    private List<MemberProduct> memberProducts = new ArrayList<>();
 
 //    @OneToOne
 //    @JoinColumn(name = "LOCKER_ID", unique = true)

@@ -1,6 +1,8 @@
 package ex1hellojpa.jpabasic;
 
 
+import ex1hellojpa.embedded.Address;
+import ex1hellojpa.embedded.Period;
 import ex1hellojpa.jpabasic.cascade.Child;
 import ex1hellojpa.jpabasic.cascade.Parent;
 import ex1hellojpa.jpabasic.inheritance.Item;
@@ -25,27 +27,14 @@ public class JpabasicApplication {
         tx.begin();
 
         try {
-            Child child = new Child();
-            Child child2 = new Child();
 
-            Parent parent = new Parent();
-            parent.addChild(child);
-            parent.addChild(child2);
+            Address address = new Address("city", "street", "10032");
 
-            em.persist(parent);
+            Member member1 = new Member();
+            member1.setUsername("member1");
+            member1.setHomeAddress(address);;
+            em.persist(member1);
 
-            em.flush();
-            em.clear();
-
-            Parent findParent = em.find(Parent.class, parent.getId());
-            em.remove(findParent);
-
-
-//            JPQL fetch join
-//            List<Member> members = em.createQuery("select m from Member m join fetch m.team", Member.class)
-//                    .getResultList();
-
-            // Hibernate.initialize(m1); // 강제 초기화
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
