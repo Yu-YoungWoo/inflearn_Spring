@@ -1,4 +1,4 @@
-package ex1hellojpa.embedded;
+package ex1hellojpa.jpabasic.embedded;
 
 
 import ex1hellojpa.jpabasic.Member;

@@ -1,15 +1,12 @@
 package ex1hellojpa.jpabasic;
 
 
-import ex1hellojpa.embedded.Address;
-import ex1hellojpa.embedded.Period;
+import ex1hellojpa.jpabasic.embedded.Address;
+import ex1hellojpa.jpabasic.embedded.Period;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter @Setter

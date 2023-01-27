@@ -1,4 +1,4 @@
-package ex1hellojpa.embedded;
+package ex1hellojpa.jpabasic.embedded;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

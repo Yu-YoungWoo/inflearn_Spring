@@ -1,20 +1,12 @@
 package ex1hellojpa.jpabasic;
 
 
-import ex1hellojpa.embedded.Address;
-import ex1hellojpa.embedded.Period;
-import ex1hellojpa.jpabasic.cascade.Child;
-import ex1hellojpa.jpabasic.cascade.Parent;
-import ex1hellojpa.jpabasic.inheritance.Item;
-import ex1hellojpa.jpabasic.inheritance.Movie;
-import org.hibernate.Hibernate;
+import ex1hellojpa.jpabasic.embedded.Address;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.time.LocalDateTime;
-import java.util.List;
 
 //@SpringBootApplication
 public class JpabasicApplication {
