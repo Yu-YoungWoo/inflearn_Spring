@@ -1,39 +1,37 @@
-package ex1hellojpa.jpabasic.embedded;
+package jpabook.jpashop.domain;
 
-
-import ex1hellojpa.jpabasic.Member;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import java.util.Objects;
 
 @Embeddable
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Address {
-    // 주소
+
+    @Column(length = 10)
     private String city;
     private String street;
-    @Column(name = "ZIPCODE")
     private String zipcode;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(city, address.city) &&
-                Objects.equals(street, address.street) &&
-                Objects.equals(zipcode, address.zipcode);
+        return Objects.equals(getCity(), address.getCity()) &&
+                Objects.equals(getStreet(), address.getStreet()) &&
+                Objects.equals(getZipcode(), address.getZipcode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, street, zipcode);
+        return Objects.hash(getCity(), getStreet(), getZipcode());
     }
 }

@@ -2,11 +2,14 @@ package ex1hellojpa.jpabasic;
 
 
 import ex1hellojpa.jpabasic.embedded.Address;
+import ex1hellojpa.jpabasic.embedded.AddressEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
+import java.util.Set;
 
 //@SpringBootApplication
 public class JpabasicApplication {
@@ -18,14 +21,10 @@ public class JpabasicApplication {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
+        // flush -> commit, query
         try {
 
-            Address address = new Address("city", "street", "10032");
 
-            Member member1 = new Member();
-            member1.setUsername("member1");
-            member1.setHomeAddress(address);;
-            em.persist(member1);
 
             tx.commit();
         } catch (Exception e) {
