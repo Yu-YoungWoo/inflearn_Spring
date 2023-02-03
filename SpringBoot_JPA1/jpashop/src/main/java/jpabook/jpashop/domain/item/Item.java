@@ -46,4 +46,11 @@ public abstract class Item {
         }
         this.stockQuantity = restStock;
     }
+
+    // 엔티티에 의미있는 함수를 만들어 유지보수를 쉽게 할 수 있음
+    public void change(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 }

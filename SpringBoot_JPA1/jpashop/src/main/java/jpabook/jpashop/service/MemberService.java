@@ -47,4 +47,12 @@ public class MemberService {
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
     }
+
+    @Transactional
+    public void update(Long id, String name) {
+        // DB에서 영속성 컨텍스트로 Member 객체 꺼내옴
+        Member member = memberRepository.findOne(id);
+        // 변경 감지에 의해서 영속성 컨텍스트에 있는 Member 객체의 Name변수에 update 쿼리 실행
+        member.setName(name);
+    }
 }

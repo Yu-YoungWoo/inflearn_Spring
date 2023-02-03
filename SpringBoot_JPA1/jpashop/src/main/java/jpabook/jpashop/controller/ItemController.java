@@ -72,19 +72,17 @@ public class ItemController {
      */
 
     @PostMapping("/items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
 
         // id를 받을 때 검증이 필요
-
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
-        itemService.saveItem(book);
+        /**
+         * 준영속 엔티티 - 영속성 컨텍스트가 더는 관리하지 않는 엔티티
+         * 객체가 한번 DB에 저장되어 식별자가 존재한다면
+         * 해당 객체를 새로 만들어도 식별자가 존재한다면? 변경을 감지하고 업데이트(변경 감지)
+         * em.merge() -> 사용 X
+         */
+        // 컨트롤러에서 엔티티 생성, 전달 X
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
     }

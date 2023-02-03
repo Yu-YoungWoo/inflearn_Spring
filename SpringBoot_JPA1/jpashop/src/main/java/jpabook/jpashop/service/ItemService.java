@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,16 @@ public class ItemService {
     @Transactional
     public void saveItem(Item item) {
         itemRepository.save(item);
+    }
+
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+        // setter 추천 X Entity단에 의미있는 함수를 사용
+        // persist를 날리지 않아도 영속성 컨텍스트에 있는 객체는 변경을 감지하고 자동으로 flush
+        findItem.change(name, price, stockQuantity);
+
+//        findItem.setStockQuantity(stockQuantity);
     }
 
     public List<Item> findItems() {
